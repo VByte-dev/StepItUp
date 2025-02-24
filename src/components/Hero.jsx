@@ -104,7 +104,7 @@ let Hero = () => {
             ref={promptRef}
             type="text"
             placeholder="How to do... anything?"
-            className="border-3 border-zinc-400 outline-none px-4 py-1 pFont w-full text-sm sm:text-md sm:py-3 rounded-md"
+            className="border-2 border-zinc-400 outline-none px-4 py-1 pFont w-full text-sm sm:text-md sm:py-3 rounded-md"
             onChange={handlePrompt}
           ></input>
           <button
