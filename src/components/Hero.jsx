@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Card from "./Card";
-import domtoimage from 'dom-to-image';
+import domtoimage from "dom-to-image";
 
 let Hero = () => {
   // Default Steps
@@ -14,6 +14,23 @@ let Hero = () => {
     "Step 7: Share it with your friends or keep it for yourself! 🤝",
     "Step 8: Need another guide? Just type a new prompt! 🔄",
   ];
+
+  // Loaders
+  const funnyLoad = [
+    "Cooking up something cool... 🍳",
+    "Bringing it to life... 🔮",
+    "Making the magic happen... ✨",
+    "Loading awesomeness... ⏳",
+    "Spinning up the wheels... 🛞",
+    "Fetching brilliance... 🏃‍♂️💡",
+    "Working my magic... 🧙‍♂️",
+    "Crafting perfection... 🎨",
+    "Piecing it together... 🧩",
+    "Cooking the secret recipe... 🥘",
+    "Powering up... ⚡",
+    "Warming up the engines... 🚗💨"
+  ];
+ 
 
   // Variabls
   let [finalSteps, setFinalSteps] = useState(stepsToUse);
@@ -36,7 +53,7 @@ let Hero = () => {
     // console.log(prompt);
     setPrompt(e.target.value);
   };
-  let handleGenerate = () => {
+  let handleGenerate = async () => {
     let newPromt = `Generate a structured, step-by-step guide to (prepare, generate, make, code) [${prompt}]. Each step must be **clear, simple, and actionable** to ensure ease of understanding.  
 
     Format the response as follows:  
@@ -55,21 +72,22 @@ let Hero = () => {
     Follow this format **precisely** to maintain clarity and usefulness.  
     `;
     aiChat(newPromt);
-    promptRef.current.value = '';
-    setPrompt('');
+    promptRef.current.value = "";
+    setPrompt("");
+    setDisplaySteps([]);
   };
 
   // Handling Download
-  let handleDownload = async() =>{
-    let element = document.getElementById('canvas');
+  let handleDownload = async () => {
+    let element = document.getElementById("canvas");
     let image = await domtoimage.toJpeg(element);
-    let link = document.createElement('a');
+    let link = document.createElement("a");
     link.href = image;
     link.download = "StepItUp.jpeg";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  }
+  };
 
   // Setting the generated steps
   useEffect(() => {
@@ -97,16 +115,26 @@ let Hero = () => {
           </button>
         </div>
         {/* Display Session */}
-        <div className="bg-zinc-200 p-1 my-6 rounded">
-          <div id="canvas">
-          {displaySteps.map((v, i, a) => (
-            <Card key={i} data={v} idx={++i} />
-          ))}
+        <div className="bg-zinc-200 p-0 my-6 rounded">
+          <div id="canvas" className="p-2">
+            {/* Empty Card as a loader */}
+            <div
+              className={`bg-white
+              } text-black m-3 ${displaySteps.length===0?'block':'hidden'} rounded px-4 py-8 pFont font-bold active:bg-green-600 cursor-pointer text-center`}
+              onClick={() => setComp(() => !comp)}
+            >
+              <h1>{funnyLoad[Math.floor(Math.random()*funnyLoad.length)]}</h1>
+            </div>
+            {displaySteps.map((v, i, a) => (
+              <Card key={i} data={v} idx={++i} />
+            ))}
           </div>
 
-          <div className="mx-2 mt-10 mb-4">
-            <button className="bg-amber-400 border-t-2 border-l-2 border-b-4 border-r-4 active:border-2 text-black px-2 py-2 pFont rounded-lg w-full active:bg-yellow-600 cursor-pointer flex justify-center gap-4 items-center focus:motion-preset-fade  motion-duration-300"
-            onClick={handleDownload}>
+          <div className="mx-2 mb-4 px-4 py-6">
+            <button
+              className="bg-amber-400 border-t-2 border-l-2 border-b-4 border-r-4 active:border-2 text-black px-2 py-2 pFont rounded-lg w-full active:bg-yellow-600 cursor-pointer flex justify-center gap-4 items-center focus:motion-preset-fade  motion-duration-300"
+              onClick={handleDownload}
+            >
               Download
             </button>
           </div>
