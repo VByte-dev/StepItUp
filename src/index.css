@@ -2,8 +2,8 @@
 @plugin "tailwindcss-motion";
 
 body, html{
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
 .pFont{
   font-family: "Bricolage Grotesque", serif;

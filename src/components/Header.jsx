@@ -3,8 +3,8 @@ import React from "react";
 let Header = () => {
   return (
     <>
-      <div className="flex justify-between items-center m-10 sm:m-20">
-        <h1 className="pFont text-xl font-bold sm:text-2xl">
+      <div className="flex justify-between items-center m-6 py-4 px-6 sm:m-20 bg-black text-white rounded-md">
+        <h1 className="pFont text-xl font-bold sm:text-2xl ">
           StepItUp<span className="text-yellow-500">.</span>
         </h1>
         <a
