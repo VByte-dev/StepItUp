@@ -77,11 +77,20 @@ let Hero = () => {
     setPrompt("");
     setDisplaySteps([]);
   };
-
   // Handling Download
   let handleDownload = async () => {
     let element = document.getElementById("canvas");
-    let image = await domtoimage.toJpeg(element);
+    let image = await domtoimage.toJpeg(element, { 
+      quality: 1,
+      width: element.offsetWidth * 16,
+      height: element.offsetHeight * 16,
+      style: {
+          transform: "scale(16)",
+          transformOrigin: "top left",
+          width: element.offsetWidth + "px",
+          height: element.offsetHeight + "px",
+    }});
+
     let link = document.createElement("a");
     link.href = image;
     link.download = "StepItUp.jpeg";
