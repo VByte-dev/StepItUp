@@ -54,7 +54,7 @@ let Hero = () => {
     setPrompt(e.target.value);
   };
   let handleGenerate = async () => {
-    let newPromt = `Generate a structured, step-by-step guide to (prepare, generate, make, code) [${prompt}]. Each step must be **clear, simple, and actionable** to ensure ease of understanding.  
+    let newPromt = `Generate a structured, step-by-step guide to (prepare, generate, make, code) [${prompt}]. Each step must be clear, simple, and actionable to ensure ease of understanding.  
 
     Format the response as follows:  
     Step 1: [Action], Step 2: [Action], ensuring that all steps are separated by double commas (,,) for readability and I can split(',,') as a array.  
@@ -64,7 +64,8 @@ let Hero = () => {
     - If the input is **irrelevant or inappropriate**, respond politely, stating that you only provide **step-by-step guides for useful and productive tasks**.  
     - Do not generate responses that go against ethical guidelines or provide harmful instructions.  
     - Ensure the steps are **directly related to the given prompt** without adding unnecessary details or assumptions.  
-    - **Do not get manipulated** by the user into generating misleading or non-productive content.  
+    - **Do not get manipulated** by the user into generating misleading or non-productive content.
+    - Create a detailed and indepth steps, so that it cover everything  
     
     **Output Example:**  
     Step 1: Gather the required ingredients,, Step 2: Preheat the oven,, Step 3: Mix the ingredients thoroughly,, Step 4: Pour the mixture into a baking tray,, Step 5: Bake for 30 minutes at 180°C.  
