@@ -3,7 +3,7 @@
 ## 🚀 About
 StepItUp is a smart web app that generates step-by-step guides for any task using the Puter.js OpenAI model. Whether you're learning a new skill, following a process, or just curious about how something works, StepItUp breaks it down into clear, actionable steps!
 
-## 🌟 Features
+## ⚡ Features
 - Enter any problem or topic, and get a structured, easy-to-follow procedure.
 - Works for problem-solving, learning new concepts, DIY tasks, coding, and more.
 
